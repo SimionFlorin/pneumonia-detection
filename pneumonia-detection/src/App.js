@@ -51,7 +51,7 @@ class App extends React.Component{
               Find out if you have pneumonia.
             </h2>
             <div>
-              <input type="file" onChange={this.onFileChange}/>
+              <input type="file" accept="image/*" onChange={this.onFileChange}/>
               <button onClick={this.submit}>
                 Predict
               </button>
