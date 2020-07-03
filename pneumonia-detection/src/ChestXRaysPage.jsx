@@ -37,26 +37,28 @@ class ChestXRaysPage extends React.Component {
 
     render() {
         return(
-            <div className="App-header">
-                {outcomes.map(outcome=>(
-                        <div>
-                            <h4 style={{marginLeft:'20%',color:'white'}} >{outcome} images</h4>
-                            <div style={{textAlign:'center'}}>
-                                {filePaths[outcome].map((path)=>{
-                                    return(
-                                        <img src={path} onClick={()=>this.processImage(path)} style={{width:200,height:250,marginLeft:10}}/>
-                                    )
-                                })}
+            <div className="XrayBackground">
+                <div className="App-header" style={{width: 'fit-content',height: 'fit-content',paddingRight: 10}}>
+                    {outcomes.map(outcome=>(
+                            <div>
+                                <div style={{textAlign:'center'}}>
+                                    <h4 style={{color:'white',marginTop:-5}} >{outcome} images</h4>
+                                    {filePaths[outcome].map((path)=>{
+                                        return(
+                                            <img src={path} onClick={()=>this.processImage(path)} style={{width:200,height:250,marginLeft:10}}/>
+                                        )
+                                    })}
+                                </div>
+                                <hr/>
                             </div>
-                            <hr/>
-                        </div>
-                    ))
-                }
-                <Link to='/'>
-                    <Button variant='primary'>
-                        Back
-                    </Button>
-                </Link>
+                        ))
+                    }
+                    <Link to='/'>
+                        <Button variant='primary'>
+                            Back
+                        </Button>
+                    </Link>
+                </div>
             </div>
         )
     }
