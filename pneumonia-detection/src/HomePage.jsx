@@ -28,12 +28,12 @@ class HomePage extends React.Component{
         this.submit(filePath)
     }
 
-    submit = (filePath='') => {
+    submit = (filePath) => {
         let body;
 
         this.setState({isProcessing:true})
-
-        if (filePath === '') {
+        console.log('filePath ',filePath)
+        if (typeof filePath !== "string") {
             body = new FormData()
             body.append(
                 "file",
