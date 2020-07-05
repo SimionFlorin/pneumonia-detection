@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Pneumonia-detection-web-app/static/css/main.6f5dedcc.chunk.css",
-    "main.js": "/Pneumonia-detection-web-app/static/js/main.dfa1fa69.chunk.js",
-    "main.js.map": "/Pneumonia-detection-web-app/static/js/main.dfa1fa69.chunk.js.map",
-    "runtime-main.js": "/Pneumonia-detection-web-app/static/js/runtime-main.7dca295e.js",
-    "runtime-main.js.map": "/Pneumonia-detection-web-app/static/js/runtime-main.7dca295e.js.map",
-    "static/css/2.af3c1da9.chunk.css": "/Pneumonia-detection-web-app/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.c55f0b73.chunk.js": "/Pneumonia-detection-web-app/static/js/2.c55f0b73.chunk.js",
-    "static/js/2.c55f0b73.chunk.js.map": "/Pneumonia-detection-web-app/static/js/2.c55f0b73.chunk.js.map",
-    "index.html": "/Pneumonia-detection-web-app/index.html",
-    "precache-manifest.3d46f4ce03e4219d8ddda7b10ea36fc2.js": "/Pneumonia-detection-web-app/precache-manifest.3d46f4ce03e4219d8ddda7b10ea36fc2.js",
-    "service-worker.js": "/Pneumonia-detection-web-app/service-worker.js",
-    "static/css/2.af3c1da9.chunk.css.map": "/Pneumonia-detection-web-app/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.6f5dedcc.chunk.css.map": "/Pneumonia-detection-web-app/static/css/main.6f5dedcc.chunk.css.map",
-    "static/js/2.c55f0b73.chunk.js.LICENSE.txt": "/Pneumonia-detection-web-app/static/js/2.c55f0b73.chunk.js.LICENSE.txt",
-    "static/media/LandingPage.css": "/Pneumonia-detection-web-app/static/media/pneumonia-background-image.c3d30ca6.jpg"
+    "main.css": "/pneumonia-detection/static/css/main.7bdafc27.chunk.css",
+    "main.js": "/pneumonia-detection/static/js/main.c1d65cd3.chunk.js",
+    "main.js.map": "/pneumonia-detection/static/js/main.c1d65cd3.chunk.js.map",
+    "runtime-main.js": "/pneumonia-detection/static/js/runtime-main.5c730235.js",
+    "runtime-main.js.map": "/pneumonia-detection/static/js/runtime-main.5c730235.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/pneumonia-detection/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.c55f0b73.chunk.js": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js",
+    "static/js/2.c55f0b73.chunk.js.map": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js.map",
+    "index.html": "/pneumonia-detection/index.html",
+    "precache-manifest.838e602b0b83043b03c2119c0cdce548.js": "/pneumonia-detection/precache-manifest.838e602b0b83043b03c2119c0cdce548.js",
+    "service-worker.js": "/pneumonia-detection/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/pneumonia-detection/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.7bdafc27.chunk.css.map": "/pneumonia-detection/static/css/main.7bdafc27.chunk.css.map",
+    "static/js/2.c55f0b73.chunk.js.LICENSE.txt": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js.LICENSE.txt",
+    "static/media/LandingPage.css": "/pneumonia-detection/static/media/pneumonia-background-image.c3d30ca6.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7dca295e.js",
+    "static/js/runtime-main.5c730235.js",
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.c55f0b73.chunk.js",
-    "static/css/main.6f5dedcc.chunk.css",
-    "static/js/main.dfa1fa69.chunk.js"
+    "static/css/main.7bdafc27.chunk.css",
+    "static/js/main.c1d65cd3.chunk.js"
   ]
 }
