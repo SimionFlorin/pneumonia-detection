@@ -100,9 +100,6 @@ class PredictPage extends React.Component{
                                 <Button variant='light' size='lg' onClick={this.submit}>
                                     PREDICT
                                 </Button>
-                                {/*<Link to='/Samples'>*/}
-                                {/*    <Button variant='light' size='lg' color='default'>TEST SAMPLE</Button>*/}
-                                {/*</Link>*/}
                             </div>
                         </div>
                         <div >
