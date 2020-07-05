@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "01bdbeb455c119364d395851471c1560",
+    "revision": "116bc734563d310319316fe4e4f8a0a8",
     "url": "/pneumonia-detection/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pneumonia-detection/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "93703795d140ed0fce52",
-    "url": "/pneumonia-detection/static/css/main.7bdafc27.chunk.css"
+    "revision": "a2c46ffd8a9a73123eb6",
+    "url": "/pneumonia-detection/static/css/main.e1d5241f.chunk.css"
   },
   {
     "revision": "15f6cbf51fbdd72c3112",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "93703795d140ed0fce52",
-    "url": "/pneumonia-detection/static/js/main.d88c4f08.chunk.js"
+    "revision": "a2c46ffd8a9a73123eb6",
+    "url": "/pneumonia-detection/static/js/main.01c33977.chunk.js"
   },
   {
     "revision": "4b74d5726a3df9f7e1ba",
