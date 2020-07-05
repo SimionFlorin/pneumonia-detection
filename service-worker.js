@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pneumonia-detection/precache-manifest.6ca5e27337b46725d79ca6c98cd95c8a.js"
+  "/pneumonia-detection/precache-manifest.dacd77d828e3257604cc3f9b477dc715.js"
 );
 
 self.addEventListener('message', (event) => {
