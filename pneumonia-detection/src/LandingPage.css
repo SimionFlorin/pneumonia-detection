@@ -1,0 +1,22 @@
+html {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(./pneumonia-background-image.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.parentDiv {
+    display: flex;
+    color: white;
+    vertical-align: middle;
+    height: 100vh;
+    font-family: roboto;
+    font-size: x-large;
+}
+
+.childDiv {
+    vertical-align: middle;
+    top: 50%;
+    align-self: center;
+}

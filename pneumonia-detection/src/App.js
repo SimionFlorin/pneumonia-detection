@@ -1,9 +1,13 @@
 import React from 'react';
 import './App.css';
-import HomePage from "./HomePage";
-import {BrowserRouter, Route} from "react-router-dom";
-import ChestXRaysPage from "./ChestXRaysPage";
+import PredictPage from "./PredictPage";
+import {BrowserRouter, Link, Route, withRouter} from "react-router-dom";
+import SamplesPage from "./SamplesPage";
 import { createBrowserHistory } from 'history';
+import LandingPage from './LandingPage'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from "./NavBar";
+import About from "./About";
 
 export const history = createBrowserHistory()
 
@@ -12,7 +16,7 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state= {
-        filePath:''
+        filePath:'',
     }
     this.deleteFilePath = this.deleteFilePath.bind(this)
     this.selectFilePath = this.selectFilePath.bind(this)
@@ -22,6 +26,7 @@ class App extends React.Component{
       this.setState({filePath:''})
     }
 
+
     selectFilePath(filePath) {
       this.setState({filePath})
     }
@@ -29,14 +34,20 @@ class App extends React.Component{
   render() {
     const { filePath } = this.state
     return (
-        <BrowserRouter history={history} >
-            <Route render={()=>(
-                <ChestXRaysPage selectFilePath={this.selectFilePath}/>
-                )} path='/chestXRays'/>
-            <Route render={() => (
-                <HomePage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
-            )} exact path='/'/>
-        </BrowserRouter>
+            <BrowserRouter history={history} >
+                <Route render={()=>(
+                    <SamplesPage selectFilePath={this.selectFilePath}/>
+                    )} path='/Samples'/>
+                <Route render={() => (
+                    <PredictPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
+                )} exact  path={['/Predict']}/>
+                <Route render={() => (
+                    <LandingPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
+                )} exact path='/Landing'/>
+                <Route render={() => (
+                    <About filePath={filePath} deleteFilePath={this.deleteFilePath}/>
+                )} exact path={['/','/About','/Home']}/>
+            </BrowserRouter>
     );
   }
 }
