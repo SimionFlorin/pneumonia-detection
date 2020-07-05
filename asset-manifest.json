@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/pneumonia-detection/static/css/main.7bdafc27.chunk.css",
-    "main.js": "/pneumonia-detection/static/js/main.1c2f29a1.chunk.js",
-    "main.js.map": "/pneumonia-detection/static/js/main.1c2f29a1.chunk.js.map",
+    "main.js": "/pneumonia-detection/static/js/main.d88c4f08.chunk.js",
+    "main.js.map": "/pneumonia-detection/static/js/main.d88c4f08.chunk.js.map",
     "runtime-main.js": "/pneumonia-detection/static/js/runtime-main.5c730235.js",
     "runtime-main.js.map": "/pneumonia-detection/static/js/runtime-main.5c730235.js.map",
     "static/css/2.af3c1da9.chunk.css": "/pneumonia-detection/static/css/2.af3c1da9.chunk.css",
     "static/js/2.c55f0b73.chunk.js": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js",
     "static/js/2.c55f0b73.chunk.js.map": "/pneumonia-detection/static/js/2.c55f0b73.chunk.js.map",
     "index.html": "/pneumonia-detection/index.html",
-    "precache-manifest.335d099d6e0be35c8e348c82f400e9ca.js": "/pneumonia-detection/precache-manifest.335d099d6e0be35c8e348c82f400e9ca.js",
+    "precache-manifest.2f98ef2f13cb5441c12a2144cac6ee90.js": "/pneumonia-detection/precache-manifest.2f98ef2f13cb5441c12a2144cac6ee90.js",
     "service-worker.js": "/pneumonia-detection/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/pneumonia-detection/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.7bdafc27.chunk.css.map": "/pneumonia-detection/static/css/main.7bdafc27.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.c55f0b73.chunk.js",
     "static/css/main.7bdafc27.chunk.css",
-    "static/js/main.1c2f29a1.chunk.js"
+    "static/js/main.d88c4f08.chunk.js"
   ]
 }
