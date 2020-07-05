@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                 <Tabs value={tab} onChange={this.handleChangeTab} aria-label="simple tabs example"
                      style={{width:'50%',maxWidth:600}}
                 >
-                    <Tab label="Home" value='Home'/>
+                    <Tab label="Home" value='Home' />
                     <Tab label="Predict" value='Predict' />
                     <Tab label="Samples" value='Samples' />
                 </Tabs>

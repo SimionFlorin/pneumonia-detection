@@ -34,7 +34,7 @@ class App extends React.Component{
   render() {
     const { filePath } = this.state
     return (
-            <BrowserRouter history={history} >
+            <BrowserRouter history={history} basename={`${process.env.PUBLIC_URL}/`}>
                 <Route render={()=>(
                     <SamplesPage selectFilePath={this.selectFilePath}/>
                     )} path='/Samples'/>

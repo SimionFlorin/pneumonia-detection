@@ -32,7 +32,7 @@ class PredictPage extends React.Component{
         this.setState({prediction_text:'',isProcessing:false})
     }
     predictSampleFile = () => {
-        const filePath = this.props.filePath.slice(1,)
+        const filePath = this.props.filePath.slice(2,)
         this.props.deleteFilePath()
         this.submit(filePath)
     }

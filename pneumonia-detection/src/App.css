@@ -18,14 +18,14 @@
 
 .App-header {
   /*background-color: #323232;*/
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-top: -10px;
+  margin-top: 5px;
 }
 
 .App-link {
@@ -55,4 +55,7 @@
   position: absolute;
   top: 45%;
   left: 40%
+}
+.test{
+  height: 35px;
 }

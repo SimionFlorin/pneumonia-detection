@@ -3,7 +3,7 @@ import {Link, withRouter} from "react-router-dom";
 import Background from "./Background";
 import './About.css'
 import * as Icon from 'react-bootstrap-icons';
-import {Button, ButtonGroup} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 class About extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class About extends React.Component {
     render() {
         return (
             <Background className='BackgroundImage'>
-                <div style={{display:'flex',justifyContent:'center',height:'100vh',alignItems:'center'}}>
+                <div style={{display:'flex',justifyContent:'center',height:'90vh',alignItems:'center'}}>
                     <div style={{justifyContent:'center',alignContent:'space-between', color:'white',textAlign:'center'}}>
                         <h2 style={{color:'goldenrod'}}>PNEUMONIA DETECTION </h2>
                         <p style={{maxWidth: 920,textAlign:'left',marginTop:15,marginBottom:15,fontSize:'x-large'}}>You can now find out if a chest Xray
