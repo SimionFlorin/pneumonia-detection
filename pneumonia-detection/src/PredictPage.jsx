@@ -49,7 +49,7 @@ class PredictPage extends React.Component{
                 this.state.selectedFile,
                 this.state.selectedFile.name
             );
-            axios.post("http://52.15.61.154/api/uploadFile", body,{'mode':'no-cors','Content-Type':'multipart/form-data'})
+            axios.post("http://35.223.195.182/api/uploadFile", body,{'mode':'no-cors','Content-Type':'multipart/form-data'})
                 .then(response=>{
                     const prediction = response.data
                     const prediction_text = prediction===1||prediction==='1'?'pneumonia':'normal'
@@ -58,7 +58,7 @@ class PredictPage extends React.Component{
         }
         else {
             body = JSON.stringify({filePath})
-            axios.post("http://52.15.61.154/api/samplePrediction", body,{'mode':'no-cors','Content-Type':'json/application'})
+            axios.post("http://35.223.195.182/api/samplePrediction", body,{'mode':'no-cors','Content-Type':'json/application'})
                 .then(response=>{
                     const prediction = response.data
                     const prediction_text = prediction===1||prediction==='1'?'pneumonia':'normal'
