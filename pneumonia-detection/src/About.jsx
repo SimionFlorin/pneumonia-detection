@@ -13,7 +13,7 @@ class About extends React.Component {
 
     render() {
         return (
-            <Background className='BackgroundImage'>
+            <Background className='BackgroundImage' hasFooter={true}>
                 <div style={{display:'flex',justifyContent:'center',height:'90vh',alignItems:'center'}}>
                     <div style={{justifyContent:'center',alignContent:'space-between', color:'white',textAlign:'center'}}>
                         <h2 style={{color:'goldenrod'}}>PNEUMONIA DETECTION </h2>
@@ -24,7 +24,7 @@ class About extends React.Component {
                             <span style={{width:320}}>
                                 <Icon.GraphUp className='Icons'/>
                                 <h4 style={{marginTop:15,marginBottom:15}}>PERFORMANCE</h4>
-                                <p style={{textAlign:'left',padding:2}}>The algorithm has a 83% accuracy. A recall of 97% and a precision of 79%</p>
+                                <p style={{textAlign:'left',padding:2}}>The model has a 83% accuracy. A recall of 97% and a precision of 79%</p>
                             </span>
                             <span style={{width:320}}>
                                 <Icon.ShieldLock className='Icons'/>

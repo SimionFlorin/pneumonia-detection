@@ -76,7 +76,7 @@ class PredictPage extends React.Component{
         }
 
         return (
-            <Background className='BackgroundImage'>
+            <Background className='BackgroundImage' hasFooter={true}>
                 {!prediction_text&&!isProcessing&&
                 <div className='parentDiv' style={{marginLeft: '20%'}}>
                     <div className='childDiv'>
