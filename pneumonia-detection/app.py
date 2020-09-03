@@ -26,9 +26,8 @@ def get_prediction(file):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
 
-@app.route("/api/uploadFile",methods = ['GET','POST'])
+@app.route("/api/uploadFile",methods = ['POST'])
 def upload_file():
-    if request.method == 'POST':
         print(request)
         file = request.files['file']
         return get_prediction(file)
