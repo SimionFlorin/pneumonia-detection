@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response, send_from_directory
 from flask_cors import CORS, cross_origin
 import os
 import tensorflow as tf
@@ -6,7 +6,7 @@ import matplotlib.image as img
 import cv2
 import numpy as np
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="build")
 cors = CORS(app, resources={r'/*': {"origins": '*'}})
 app.config['UPLOAD_FOLDER'] = 'uploaded_x_rays'
 
@@ -43,8 +43,13 @@ def sample_prediction():
         full_path = os.path.join('..','chest_xray','train','NORMAL',file_path)
     return get_prediction(full_path)
 
-@app.route("/",methods = ['GET'])
-def test():
-    return 'merge'
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+    
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(use_reloader=True, port=5000, threaded=True)

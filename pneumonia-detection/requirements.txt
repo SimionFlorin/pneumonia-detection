@@ -1,0 +1,8 @@
+Flask==2.0.2
+gunicorn
+flask_cors
+tensorflow
+matplotlib
+Pillow
+opencv-python
+numpy

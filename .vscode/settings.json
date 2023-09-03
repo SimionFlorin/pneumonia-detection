@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b426784a-c2f0-4374-965d-c36d6dc0b33b/resourceGroups/europe_resource_group_ultrasound_test/providers/Microsoft.Web/sites/europeUltrasoundTest",
+    "appService.deploySubpath": "pneumonia-detection"
+}
