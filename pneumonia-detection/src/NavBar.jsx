@@ -20,12 +20,11 @@ class NavBar extends React.Component {
         return(
             <div style={{textAlign: '-webkit-right'}} className={className?className:'NavBarDefault'}>
                 {/*<AppBar position="static" variant='outlined' >*/}
-                <Tabs value={tab} onChange={this.handleChangeTab} aria-label="simple tabs example"
-                     style={{width:'50%',maxWidth:600}}
-                >
+                <Tabs value={tab} onChange={this.handleChangeTab} aria-label="simple tabs example"                >
                     <Tab label="Home" value='Home' />
                     <Tab label="Predict" value='Predict' />
                     <Tab label="Samples" value='Samples' />
+                    <Tab label="PredictPage" value='PredictSelectionPage' />
                 </Tabs>
                 {/*</AppBar>*/}
             </div>

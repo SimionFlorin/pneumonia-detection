@@ -21,9 +21,9 @@ class LandingPage extends React.Component {
             <div className='parentDiv'>
                 <div className='childDiv'>
                     <h2>
-                        UPLOAD A CHEST X-RAY.
+                        UPLOAD AN ULTRASOUND.
                         <br/>
-                        FIND OUT IF YOU HAVE PNEUMONIA.
+                        FIND OUT IF YOU HAVE SJOGREN'S SYNDROME.
                     </h2>
                     <Link to='/Home' >
                         <Button variant="contained" color='Link'>material=ui</Button>

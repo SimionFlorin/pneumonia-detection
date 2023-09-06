@@ -22,7 +22,7 @@ const filePaths = {
 }
 
 const outcomes = [
-    'Pneumonia', 'Healthy'
+    "Sjogren's Syndrome", 'Healthy'
 ]
 
 class SamplesPage extends React.Component {

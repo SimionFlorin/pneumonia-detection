@@ -16,9 +16,9 @@ class About extends React.Component {
             <Background className='BackgroundImage' hasFooter={true}>
                 <div style={{display:'flex',justifyContent:'center',height:'90vh',alignItems:'center'}}>
                     <div style={{justifyContent:'center',alignContent:'space-between', color:'white',textAlign:'center'}}>
-                        <h2 style={{color:'goldenrod'}}>PNEUMONIA DETECTION </h2>
-                        <p style={{maxWidth: 920,textAlign:'left',marginTop:15,marginBottom:15,fontSize:'x-large'}}>You can now find out if a chest Xray
-                            portrays a healthy chest or one with pneumonia. Upload your own image or try out one of our samples</p>
+                        <h2 style={{color:'goldenrod'}}>SJOGREN'S SYNDROME DETECTION </h2>
+                        <p style={{maxWidth: 920,textAlign:'left',marginTop:15,marginBottom:15,fontSize:'x-large'}}>You can now find out if an ultrasound
+                            . Upload your own image or try out one of our samples</p>
                         <hr style={{backgroundColor:'goldenrod'}}/>
                         <div style={{alignContent:'space-between',display:'inline-flex',maxWidth:960}}>
                             <span style={{width:320}}>
@@ -36,7 +36,7 @@ class About extends React.Component {
                             <span style={{width:320}}>
                                 <Icon.XCircle className='Icons'/>
                                 <h4 style={{marginTop:15,marginBottom:15}}>LIMITATIONS</h4>
-                                <p style={{textAlign:'left',padding:2}}>It doesn't work on images beside chest X-ray. The training was done on chest X ray images only.
+                                <p style={{textAlign:'left',padding:2}}>It doesn't work on images beside ultrasounds. The training was done on ultrasounds images only.
                                 For any other image the the result will not be relevant</p>
                             </span>
                         </div>

@@ -9,6 +9,8 @@ import {Form} from "react-bootstrap";
 import Background from "./Background";
 import './LandingPage.css'
 import Alert from "react-bootstrap/Alert";
+import SelectInput from '@material-ui/core/Select/SelectInput';
+import { Select, MenuItem, InputLabel } from '@material-ui/core';
 
 class PredictPage extends React.Component{
 
@@ -19,6 +21,8 @@ class PredictPage extends React.Component{
         }
 
         this.onFileChange = this.onFileChange.bind(this)
+        this.handleTextChange = this.handleTextChange.bind(this)
+        this.onSexChange = this.onSexChange.bind(this)
         this.submit  = this.submit.bind(this)
         this.predictSampleFile = this.predictSampleFile.bind(this)
         this.Refresh = this.Refresh.bind(this)
@@ -27,6 +31,13 @@ class PredictPage extends React.Component{
     onFileChange = event => {
         this.setState({ selectedFile: event.target.files[0] });
     };
+    handleTextChange = event => {
+        const field = event.target.name
+        this.setState({ [field]: event.target.value });
+    }
+    onSexChange = event => {
+        this.setState({sex:event.target.value})
+    }
     Refresh = () => {
         console.log('in refresh')
         this.setState({prediction_text:'',isProcessing:false})
@@ -70,7 +81,7 @@ class PredictPage extends React.Component{
     };
 
     render() {
-        const { prediction_text, isProcessing, selectedFile} = this.state
+        const { prediction_text, isProcessing, selectedFile, age, BMI, weight, abdominalCircumference, height, sex} = this.state
         if  (this.props.filePath) {
             this.predictSampleFile()
         }
@@ -87,9 +98,35 @@ class PredictPage extends React.Component{
                         </h2>
                         <div className="mb-3">
                             <Form>
+                                <Form.Group>
+                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Age'
+                                        onChange={this.handleTextChange} value={age} name='age'
+                                    />
+                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='BMI'
+                                        onChange={this.handleTextChange} value={BMI} name='BMI'
+                                    />
+                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Weight in kg'
+                                        onChange={this.handleTextChange} value={weight} name='weight'
+                                    />
+                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Abdominal Circumference in cm'
+                                        onChange={this.handleTextChange} value={abdominalCircumference} name='abdominalCircumference'
+                                    />
+                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Height in cm'
+                                        onChange={this.handleTextChange} value={height} name='height'
+                                    />
+                                    <InputLabel id="sex-label">Sex</InputLabel>
+                                    <Select
+                                        labelId="sex-label"
+                                        value={sex}
+                                        onChange={this.onSexChange}
+                                    >
+                                        <MenuItem value={'male'}>Male</MenuItem>
+                                        <MenuItem value={'female'}>Female</MenuItem>
+                                    </Select>
+                                </Form.Group>
                                 <Form.File
                                     id="custom-file-translate-scss"
-                                    label={selectedFile?.name?selectedFile.name:"Chest X-ray Image"}
+                                    label={selectedFile?.name?selectedFile.name:"Ultrasound Image"}
                                     lang="en"
                                     custom
                                     onChange={this.onFileChange}

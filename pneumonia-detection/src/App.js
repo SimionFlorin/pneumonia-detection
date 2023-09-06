@@ -8,6 +8,8 @@ import LandingPage from './LandingPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./NavBar";
 import About from "./About";
+import PredictSelectionPage from "./PredictSelectionPage";
+import SingleTabularModelPredictPage from "./SingleTabularModelPredictPage";
 
 export const history = createBrowserHistory()
 
@@ -41,6 +43,12 @@ class App extends React.Component{
                 <Route render={() => (
                     <PredictPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
                 )} exact  path={['/Predict']}/>
+                <Route render={() => (
+                    <PredictSelectionPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
+                )} exact  path={['/PredictSelectionPage']}/>
+                <Route render={() => (
+                    <SingleTabularModelPredictPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
+                )} exact  path={['/SingleTabularModelPredictPage']}/>
                 <Route render={() => (
                     <LandingPage filePath={filePath} deleteFilePath={this.deleteFilePath}/>
                 )} exact path='/Landing'/>
