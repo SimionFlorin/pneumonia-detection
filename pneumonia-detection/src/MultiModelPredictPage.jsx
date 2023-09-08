@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './images.png';
 import './App.css';
+import './MultiModelPages.css'
 import axios from 'axios'
 import ReactLoading from 'react-loading'
 import {Link} from "react-router-dom";
@@ -11,13 +12,19 @@ import './LandingPage.css'
 import Alert from "react-bootstrap/Alert";
 import CustomAlert from './Components/CustomAlert';
 
-class PredictPage extends React.Component{
+class MultiModelPredictPage extends React.Component{
 
     constructor(props) {
         super(props);
         this.state= {
             isProcessing:false,
             alert:null,
+            selectedFiles: {
+                leftParotid: null,
+                rightParotid: null,
+                leftSubmandibular: null,
+                rightSubmandibular: null,
+            }
         }
 
         this.onFileChange = this.onFileChange.bind(this)
@@ -26,9 +33,11 @@ class PredictPage extends React.Component{
         this.Refresh = this.Refresh.bind(this)
     }
 
-    onFileChange = event => {
-        this.setState({ selectedFile: event.target.files[0] });
+    onFileChange = (event, label) => {
+        const newFiles = { ...this.state.selectedFiles, [label]: event.target.files[0] };
+        this.setState({ selectedFiles: newFiles });
     };
+
     Refresh = () => {
         console.log('in refresh')
         this.setState({prediction_text:'',isProcessing:false})
@@ -44,22 +53,25 @@ class PredictPage extends React.Component{
 
         this.setState({ isProcessing: true, alert: null  });
 
-        if (!filePath.name && !this.state.selectedFile) {
+        const { selectedFiles } = this.state;
+        const allFiles = Object.values(selectedFiles);
+        if (allFiles.some(file => !file)) {
             this.setState({ 
-                alert: "All fields are required!",
+                alert: "All 4 body parts ultrasounds are required!",
                 isProcessing: false 
             });
             return;
         }
+        
 
         console.log('filePath ',filePath)
         if (typeof filePath !== "string") {
-            body = new FormData()
-            body.append(
-                "file",
-                this.state.selectedFile,
-                this.state.selectedFile.name
-            );
+            body = new FormData();
+            Object.entries(selectedFiles).forEach(([key, file]) => {
+                if (file) {
+                    body.append(key, file, file.name);
+                }
+            });
             axios.post("http://35.223.195.182/api/uploadFile", body,{'mode':'no-cors','Content-Type':'multipart/form-data'})
                 .then(response=>{
                     const prediction = response.data
@@ -81,7 +93,7 @@ class PredictPage extends React.Component{
     };
 
     render() {
-        const { prediction_text, isProcessing, selectedFile} = this.state
+        const { prediction_text, isProcessing, selectedFiles } = this.state
         if  (this.props.filePath) {
             this.predictSampleFile()
         }
@@ -93,35 +105,35 @@ class PredictPage extends React.Component{
                         {this.state.alert}
                     </CustomAlert>
                 }
-                {!prediction_text&&!isProcessing&&
-                <div className='parentDiv' style={{marginLeft: '20%'}}>
+                {!prediction_text && !isProcessing &&
+                <div className='parentDiv' style={{ marginLeft: '20%', width: "70%" }}>
                     <div className='childDiv'>
                         <h2>
-                            UPLOAD AN ULTRASOUND.
-                            <br/>
                             FIND OUT IF YOU HAVE SJOGREN'S.
-                        </h2>
-                        <div className="mb-3">
-                            <Form>
-                                <Form.File
-                                    id="custom-file-translate-scss"
-                                    label={selectedFile?.name?selectedFile.name:"Chest X-ray Image"}
-                                    lang="en"
-                                    custom
-                                    onChange={this.onFileChange}
-                                />
-                            </Form>
                             <br/>
-                            <div style={{justifyContent:'space-between',display:'flex'}}>
+                            BY UPLOADING THE FOLLOWING ULTRASOUNDS:
+                        </h2>
+                        <Form className="files-container">
+                            {Object.entries(selectedFiles).map(([key, file]) => (
+                                <div key={key}>
+                                    <Form.File
+                                        className="file-wrapper"
+                                        id={`custom-file-${key}`}
+                                        label={file?.name || key}
+                                        lang="en"
+                                        custom
+                                        onChange={(e) => this.onFileChange(e, key)}
+                                    />
+                                    <br />
+                                </div>
+                            ))}
+                        <br />
+                            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
                                 <Button variant='light' size='lg' onClick={this.submit}>
                                     PREDICT
                                 </Button>
                             </div>
-                        </div>
-                        <div >
-
-                        </div>
-                        <br/>
+                        </Form>
                     </div>
                 </div>}
                 {isProcessing&&
@@ -153,4 +165,4 @@ class PredictPage extends React.Component{
     }
 }
 
-export default PredictPage;
+export default MultiModelPredictPage;

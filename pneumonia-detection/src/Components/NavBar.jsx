@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from 'react-router-dom'
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import './App.css'
+import '../App.css'
 
 class NavBar extends React.Component {
     constructor() {
@@ -22,9 +22,9 @@ class NavBar extends React.Component {
                 {/*<AppBar position="static" variant='outlined' >*/}
                 <Tabs value={tab} onChange={this.handleChangeTab} aria-label="simple tabs example"                >
                     <Tab label="Home" value='Home' />
-                    <Tab label="Predict" value='Predict' />
+                    {/* <Tab label="Predict" value='Predict' /> */}
                     <Tab label="Samples" value='Samples' />
-                    <Tab label="PredictPage" value='PredictSelectionPage' />
+                    <Tab label="PredictPage" value='PredictSelection' />
                 </Tabs>
                 {/*</AppBar>*/}
             </div>

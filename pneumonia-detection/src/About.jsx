@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
-import Background from "./Background";
+import Background from "./Components/Background";
 import './About.css'
 import * as Icon from 'react-bootstrap-icons';
 import {Button} from "react-bootstrap";
@@ -43,7 +43,7 @@ class About extends React.Component {
                         <br/>
                         <br/>
                         <div>
-                            <Link to='/Predict' style={{marginRight:510}}>
+                            <Link to='/SingleModel' style={{marginRight:510}}>
                                 <Button variant='primary' style={{borderRadius:30}}>UPLOAD IMAGE</Button>
                             </Link>
                             <Link to='/Samples'>

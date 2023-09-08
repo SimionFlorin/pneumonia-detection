@@ -3,21 +3,21 @@ import logo from './images.png';
 import './App.css';
 import axios from 'axios'
 import ReactLoading from 'react-loading'
-import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import {Form} from "react-bootstrap";
-import Background from "./Background";
+import Background from "./Components/Background";
 import './LandingPage.css'
-import Alert from "react-bootstrap/Alert";
-import SelectInput from '@material-ui/core/Select/SelectInput';
-import { Select, MenuItem, InputLabel } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
+import UserInputFields from './Components/UserInputFields';
+import CustomAlert from './Components/CustomAlert';
 
-class PredictPage extends React.Component{
+class SingleTabularModelPredictPage extends React.Component{
 
     constructor(props) {
         super(props);
         this.state= {
-            isProcessing:false
+            isProcessing:false,
+            alert:null,
         }
 
         this.onFileChange = this.onFileChange.bind(this)
@@ -50,80 +50,92 @@ class PredictPage extends React.Component{
 
     submit = (filePath) => {
         let body;
+    
+        this.setState({ isProcessing: true, alert: null  });
+        console.log('filePath ', filePath);
 
-        this.setState({isProcessing:true})
-        console.log('filePath ',filePath)
+        if ((!this.state.age || !this.state.weight || !this.state.abdominalCircumference || !this.state.height || !this.state.sex) || (!filePath.name && !this.state.selectedFile)) {
+            this.setState({ 
+                alert: "All fields are required!",
+                isProcessing: false 
+            });
+            return;
+        }
+
+        // Gather all form data
+        const formData = {
+            age: this.state.age,
+            BMI: this.state.weight/((this.state.height/100)**2),
+            weight: this.state.weight,
+            abdominalCircumference: this.state.abdominalCircumference,
+            height: this.state.height,
+            sex: this.state.sex,
+            filePath: typeof filePath === "string" ? filePath : null
+        };
+    
         if (typeof filePath !== "string") {
-            body = new FormData()
-            body.append(
-                "file",
-                this.state.selectedFile,
-                this.state.selectedFile.name
-            );
-            axios.post("http://35.223.195.182/api/uploadFile", body,{'mode':'no-cors','Content-Type':'multipart/form-data'})
-                .then(response=>{
-                    const prediction = response.data
-                    const prediction_text = prediction===1||prediction==='1'?"Sjogren's Syndrome":'normal'
-                    this.setState({prediction_text, isProcessing:false})
+            body = new FormData();
+            
+            // Append each form data to the FormData object
+            for (const key in formData) {
+                if (formData[key] !== null) {
+                    body.append(key, formData[key]);
+                }
+            }
+            
+            // Append the file to the FormData object
+            body.append("file", this.state.selectedFile, this.state.selectedFile.name);
+    
+            axios.post("http://35.223.195.182/api/uploadFile", body, { 'mode': 'no-cors', 'Content-Type': 'multipart/form-data' })
+                .then(response => {
+                    const prediction = response.data;
+                    const prediction_text = prediction === 1 || prediction === '1' ? "Sjogren's Syndrome" : 'normal';
+                    this.setState({ prediction_text, isProcessing: false });
+                });
+        } else {
+            body = JSON.stringify(formData);
+            axios.post("http://35.223.195.182/api/samplePrediction", body, { 'mode': 'no-cors', 'Content-Type': 'application/json' })
+                .then(response => {
+                    const prediction = response.data;
+                    const prediction_text = prediction === 1 || prediction === '1' ? "Sjogren's Syndrome" : 'normal';
+                    this.setState({ prediction_text, isProcessing: false });
                 });
         }
-        else {
-            body = JSON.stringify({filePath})
-            axios.post("http://35.223.195.182/api/samplePrediction", body,{'mode':'no-cors','Content-Type':'json/application'})
-                .then(response=>{
-                    const prediction = response.data
-                    const prediction_text = prediction===1||prediction==='1'?"Sjogren's Syndrome":'normal'
-                    this.setState({prediction_text, isProcessing:false})
-                });
-        }
-
-
     };
 
     render() {
-        const { prediction_text, isProcessing, selectedFile, age, BMI, weight, abdominalCircumference, height, sex} = this.state
+        const { prediction_text, isProcessing, selectedFile, age, weight, abdominalCircumference, height, sex} = this.state
         if  (this.props.filePath) {
             this.predictSampleFile()
         }
 
         return (
             <Background className='BackgroundImage' hasFooter={true}>
+                {this.state.alert && 
+                    <CustomAlert onClose={() => this.setState({ alert: '' })}>
+                        {this.state.alert}
+                    </CustomAlert>
+                }
                 {!prediction_text&&!isProcessing&&
                 <div className='parentDiv' style={{marginLeft: '20%'}}>
                     <div className='childDiv'>
                         <h2>
-                            UPLOAD AN ULTRASOUND.
+                            UPLOAD AN ULTRASOUND AND FILL THE FIELDS.
                             <br/>
                             FIND OUT IF YOU HAVE SJOGREN'S.
                         </h2>
                         <div className="mb-3">
                             <Form>
-                                <Form.Group>
-                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Age'
-                                        onChange={this.handleTextChange} value={age} name='age'
-                                    />
-                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='BMI'
-                                        onChange={this.handleTextChange} value={BMI} name='BMI'
-                                    />
-                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Weight in kg'
-                                        onChange={this.handleTextChange} value={weight} name='weight'
-                                    />
-                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Abdominal Circumference in cm'
-                                        onChange={this.handleTextChange} value={abdominalCircumference} name='abdominalCircumference'
-                                    />
-                                    <Form.Text style={{textAlign:'center', fontSize:20}} placeholder='Height in cm'
-                                        onChange={this.handleTextChange} value={height} name='height'
-                                    />
-                                    <InputLabel id="sex-label">Sex</InputLabel>
-                                    <Select
-                                        labelId="sex-label"
-                                        value={sex}
-                                        onChange={this.onSexChange}
-                                    >
-                                        <MenuItem value={'male'}>Male</MenuItem>
-                                        <MenuItem value={'female'}>Female</MenuItem>
-                                    </Select>
-                                </Form.Group>
+                                <UserInputFields 
+                                    handleTextChange={this.handleTextChange}
+                                    onSexChange={this.onSexChange}
+                                    age={age}
+                                    weight={weight}
+                                    abdominalCircumference={abdominalCircumference}
+                                    height={height}
+                                    sex={sex}
+                                />
+
                                 <Form.File
                                     id="custom-file-translate-scss"
                                     label={selectedFile?.name?selectedFile.name:"Ultrasound Image"}
@@ -138,9 +150,6 @@ class PredictPage extends React.Component{
                                     PREDICT
                                 </Button>
                             </div>
-                        </div>
-                        <div >
-
                         </div>
                         <br/>
                     </div>
@@ -174,4 +183,4 @@ class PredictPage extends React.Component{
     }
 }
 
-export default PredictPage;
+export default SingleTabularModelPredictPage;

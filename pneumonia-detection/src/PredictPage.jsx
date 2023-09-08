@@ -6,7 +6,7 @@ import ReactLoading from 'react-loading'
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import {Form} from "react-bootstrap";
-import Background from "./Background";
+import Background from "./Components/Background";
 import './LandingPage.css'
 import Alert from "react-bootstrap/Alert";
 

@@ -2,7 +2,7 @@ import React from "react";
 import {Link, withRouter} from "react-router-dom";
 import {Button} from "react-bootstrap";
 import './App.css';
-import Background from "./Background";
+import Background from "./Components/Background";
 import Card from "react-bootstrap/Card";
 
 const filePaths = {
